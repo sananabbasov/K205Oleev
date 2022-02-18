@@ -4,6 +4,7 @@ using K205Oleev.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace K205Oleev.Migrations
 {
     [DbContext(typeof(OleevDbContext))]
-    partial class OleevDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220218111955_NewLang")]
+    partial class NewLang
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,10 +63,6 @@ namespace K205Oleev.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LangCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SEO")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -175,10 +173,6 @@ namespace K205Oleev.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SEO")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -235,10 +229,6 @@ namespace K205Oleev.Migrations
 
                     b.Property<int>("OurServiceID")
                         .HasColumnType("int");
-
-                    b.Property<string>("SEO")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()

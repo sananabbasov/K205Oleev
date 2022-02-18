@@ -9,6 +9,12 @@ namespace K205Oleev.Data
             : base(options) { }
 
         public DbSet<About> Abouts { get; set; }
+        public DbSet<AboutLanguage> AboutLanguages { get; set; }
         public DbSet<Info> Infos { get; set; }
+        public DbSet<InfoLanguage> InfoLanguages { get; set; }
+        public DbSet<CountDown> CountDowns { get; set; }
+        public DbSet<CountDownLanguage> CountDownLanguages { get; set; }
+        public DbSet<OurService> OurServices { get; set; }
+        public DbSet<OurServiceLanguage> OurServiceLanguages { get; set; }
     }
 }
