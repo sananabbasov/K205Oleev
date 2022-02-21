@@ -1,0 +1,45 @@
+﻿@model AboutLanguage
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <form method="post">
+                <p>Title</p>
+                <span>AZ</span>
+                <input class="form-control mb-2" name="Title" />
+                <span>RU</span>
+                <input class="form-control mb-2" name="Title" />
+                <span>EN</span>
+                <input class="form-control mb-2" name="Title" />
+
+                <p>Description</p>
+                <span>AZ</span>
+                <input class="form-control mb-2" name="Description" />
+                <span>RU</span>
+                <input class="form-control mb-2" name="Description" />
+                <span>EN</span>
+                <input class="form-control mb-2" name="Description" />
+                
+                <p>LangCode</p>
+                <input type="hidden" class="form-control mb-2" name="LangCode" value="AZ"/>
+                <input type="hidden" class="form-control mb-2" name="LangCode" value="RU"/>
+                <input type="hidden" class="form-control mb-2" name="LangCode" value="EN"/>
+
+                <p>SEO</p>
+                <span>AZ</span>
+                <input class="form-control mb-2" name="SEO"/>
+                <span>RU</span>
+                <input class="form-control mb-2" name="SEO"/>
+                <span>EN</span>
+                <input class="form-control mb-2" name="SEO" />
+
+
+                <p>Photo</p>
+                <input class="form-control mb-2" type="text" name="PhotoURL" />
+
+                <input class="form-control mb-2" type="submit" value="Create" />
+            </form>
+        </div>
+    </div>
+</div>

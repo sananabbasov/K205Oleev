@@ -19,5 +19,19 @@ namespace K205Oleev.Areas.admin.Controllers
             var about = _context.AboutLanguages.Include(x=>x.About).Where(x=>x.LangCode=="Az").ToList();
             return View(about);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(List<string> Title, List<string> Description, List<string> LangCode, List<string> SEO, string PhotoURL)
+        {
+
+            return View();
+        }
     }
 }
