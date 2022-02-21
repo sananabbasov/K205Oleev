@@ -1,4 +1,5 @@
 ﻿using K205Oleev.Data;
+using K205Oleev.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace K205Oleev.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            var about = _context.AboutLanguages.Include(x=>x.About).Where(x=>x.LangCode=="Az").ToList();
+            var about = _context.AboutLanguages.Include(x=>x.About).Where(x=>x.LangCode=="AZ").ToList();
             return View(about);
         }
 
@@ -30,8 +31,35 @@ namespace K205Oleev.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(List<string> Title, List<string> Description, List<string> LangCode, List<string> SEO, string PhotoURL)
         {
+            About about = new()
+            {
+                PhotoURL = PhotoURL,
+                CreatedDate = DateTime.Now,
+            };
 
-            return View();
+            _context.Abouts.Add(about);
+            _context.SaveChanges();
+            for (int i = 0; i < Description.Count; i++)
+            {
+                AboutLanguage aboutLanguage = new()
+                {
+                    Title = Title[i],
+                    Description = Description[i],
+                    LangCode = LangCode[i],
+                    SEO = SEO[i],
+                    AboutID = about.ID
+                };
+                _context.AboutLanguages.Add(aboutLanguage);
+
+            }
+
+
+            _context.SaveChanges();
+
+
+
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
