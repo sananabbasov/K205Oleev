@@ -1,0 +1,18 @@
+﻿@model IEnumerable<AboutLanguage>
+@{
+    int count = 0;
+}
+
+@foreach (var item in Model)
+{
+  
+    
+    <p>@item.Title</p>
+
+    count++;
+}
+
+@if (count == 0)
+{
+    <div class="alert alert-danger">Melumat yoxdu</div>
+}
