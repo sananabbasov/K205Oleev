@@ -1,4 +1,4 @@
-﻿namespace K205Oleev.Models
+﻿namespace Entities
 {
     public class Info : Base
     {

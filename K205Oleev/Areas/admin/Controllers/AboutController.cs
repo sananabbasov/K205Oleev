@@ -1,6 +1,8 @@
-﻿using K205Oleev.Areas.admin.ViewModel;
+﻿using Entities;
+using Helper.Methods;
+using K205Oleev.Areas.admin.ViewModel;
 using K205Oleev.Data;
-using K205Oleev.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -81,12 +83,14 @@ namespace K205Oleev.Areas.admin.Controllers
         {
             for (int i = 0; i < Title.Count; i++)
             {
+                SEO seo = new();
+
                 AboutLanguage aboutLanguage = new()
                 {
                     ID = LangID[i],
                     Title = Title[i],
                     Description=Description[i],
-                    SEO = "test",
+                    SEO = seo.SeoURL(Title[i]),
                     LangCode = LangCode[i],
                     AboutID = AboutID
                 };

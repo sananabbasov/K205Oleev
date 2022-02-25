@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K205Oleev", "K205Oleev\K205Oleev.csproj", "{639C6391-32D4-4C77-A899-EE842BC071F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K205Oleev", "K205Oleev\K205Oleev.csproj", "{639C6391-32D4-4C77-A899-EE842BC071F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{44EB7FDE-AB03-44C6-8F67-2D3974F4A343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{DF000A82-997B-4417-82D3-15085AE98FAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{639C6391-32D4-4C77-A899-EE842BC071F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639C6391-32D4-4C77-A899-EE842BC071F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639C6391-32D4-4C77-A899-EE842BC071F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44EB7FDE-AB03-44C6-8F67-2D3974F4A343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44EB7FDE-AB03-44C6-8F67-2D3974F4A343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44EB7FDE-AB03-44C6-8F67-2D3974F4A343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44EB7FDE-AB03-44C6-8F67-2D3974F4A343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF000A82-997B-4417-82D3-15085AE98FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF000A82-997B-4417-82D3-15085AE98FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF000A82-997B-4417-82D3-15085AE98FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF000A82-997B-4417-82D3-15085AE98FAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

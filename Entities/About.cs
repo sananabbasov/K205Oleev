@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace K205Oleev.Models
+namespace Entities
 {
     public class About : Base
     {

@@ -1,4 +1,4 @@
-﻿using K205Oleev.Models;
+﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace K205Oleev.Data
