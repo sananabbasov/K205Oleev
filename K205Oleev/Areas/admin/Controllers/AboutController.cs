@@ -75,6 +75,29 @@ namespace K205Oleev.Areas.admin.Controllers
 
             return View(editVM);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int AboutID,List<int> LangID, List<string> Title, List<string> Description, List<string> LangCode)
+        {
+            for (int i = 0; i < Title.Count; i++)
+            {
+                AboutLanguage aboutLanguage = new()
+                {
+                    ID = LangID[i],
+                    Title = Title[i],
+                    Description=Description[i],
+                    SEO = "test",
+                    LangCode = LangCode[i],
+                    AboutID = AboutID
+                };
+                var updatedEntity = _context.Entry(aboutLanguage);
+                updatedEntity.State = EntityState.Modified;
+            }
+                _context.SaveChanges();
+
+
+            return RedirectToAction(nameof(Index));
+        }
        
     }
 }
