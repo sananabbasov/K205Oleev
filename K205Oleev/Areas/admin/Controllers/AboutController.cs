@@ -64,13 +64,15 @@ namespace K205Oleev.Areas.admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             EditVM editVM = new()
             {
                 AboutLanguages = _context.AboutLanguages.Include(x => x.About).Where(x => x.AboutID == id).ToList(),
-                About = _context.Abouts.FirstOrDefault(x=>x.ID == id),
+                About = _context.Abouts.FirstOrDefault(x => x.ID == id.Value)
             };
+
+
             return View(editVM);
         }
        
