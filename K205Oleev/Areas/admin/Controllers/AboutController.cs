@@ -1,4 +1,5 @@
-﻿using K205Oleev.Data;
+﻿using K205Oleev.Areas.admin.ViewModel;
+using K205Oleev.Data;
 using K205Oleev.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -61,5 +62,17 @@ namespace K205Oleev.Areas.admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            EditVM editVM = new()
+            {
+                AboutLanguages = _context.AboutLanguages.Include(x => x.About).Where(x => x.AboutID == id).ToList(),
+                About = _context.Abouts.FirstOrDefault(x=>x.ID == id),
+            };
+            return View(editVM);
+        }
+       
     }
 }
