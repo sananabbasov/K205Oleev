@@ -1,8 +1,7 @@
-﻿using Entities;
+﻿using DataAccess;
+using Entities;
 using Helper.Methods;
 using K205Oleev.Areas.admin.ViewModel;
-using K205Oleev.Data;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

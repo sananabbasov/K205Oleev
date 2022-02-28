@@ -1,4 +1,4 @@
-using K205Oleev.Data;
+using DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,7 +1,7 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace K205Oleev.Data
+namespace DataAccess
 {
     public class OleevDbContext : DbContext
     {
