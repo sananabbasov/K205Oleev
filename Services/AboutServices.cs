@@ -24,7 +24,7 @@ namespace Services
             return about;
         }
 
-        public void CreateAbout(List<string> Title, List<string> Description, List<string> LangCode, List<string> SEO, string PhotoURL)
+        public void CreateAbout(string Title, string Description, string LangCode, string SEO, string PhotoURL)
         {
             About about = new()
             {
@@ -34,19 +34,18 @@ namespace Services
 
             _context.Abouts.Add(about);
             _context.SaveChanges();
-            for (int i = 0; i < Description.Count; i++)
-            {
+            
                 AboutLanguage aboutLanguage = new()
                 {
-                    Title = Title[i],
-                    Description = Description[i],
-                    LangCode = LangCode[i],
-                    SEO = SEO[i],
+                    Title = Title,
+                    Description = Description,
+                    LangCode = LangCode,
+                    SEO = SEO,
                     AboutID = about.ID
                 };
                 _context.AboutLanguages.Add(aboutLanguage);
-
-            }
+            
+            
             _context.SaveChanges();
         }
     }

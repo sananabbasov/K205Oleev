@@ -11,16 +11,16 @@ namespace K205Oleev.Areas.admin.Controllers
     [Area("admin")]
     public class AboutController : Controller
     {
-        private readonly AboutServices _context;
+        private readonly AboutServices _services;
 
-        public AboutController(AboutServices context)
+        public AboutController(AboutServices services)
         {
-            _context = context;
+            _services = services;
         }
 
         public IActionResult Index()
         {
-          var about = _context.GetAll();
+          var about = _services.GetAll();
             
             return View(about);
         }
@@ -35,8 +35,11 @@ namespace K205Oleev.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(List<string> Title, List<string> Description, List<string> LangCode, List<string> SEO, string PhotoURL)
         {
-            
 
+            for (int i = 0; i < Title.Count; i++)
+            {
+                _services.CreateAbout(Title[i], Description[i], LangCode[i], SEO[i], PhotoURL);
+            }
 
 
             return RedirectToAction(nameof(Index));

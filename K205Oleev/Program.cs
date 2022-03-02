@@ -1,5 +1,8 @@
 using DataAccess;
+using Entities;
 using Microsoft.EntityFrameworkCore;
+using Services;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 var connectingString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<OleevDbContext>
     (options => options.UseSqlServer(connectingString));
+
+builder.Services.AddDefaultIdentity<K205User>().AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<OleevDbContext>();
+
+
+builder.Services.AddScoped<AboutServices>();
 
 builder.Services.AddControllersWithViews();
 
