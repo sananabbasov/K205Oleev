@@ -2,6 +2,7 @@
 using Entities;
 using Helper.Methods;
 using K205Oleev.Areas.admin.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services;
@@ -9,6 +10,7 @@ using Services;
 namespace K205Oleev.Areas.admin.Controllers
 {
     [Area("admin")]
+    [Authorize]
     public class AboutController : Controller
     {
         private readonly AboutServices _services;

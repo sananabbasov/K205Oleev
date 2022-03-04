@@ -20,6 +20,12 @@ builder.Services.AddScoped<AboutServices>();
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/auth/login";
+    option.AccessDeniedPath = "/auth/login";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>

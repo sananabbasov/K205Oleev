@@ -30,6 +30,8 @@ namespace K205Oleev.Controllers
             K205User user = new()
             {
                 UserName = registerVM.Name,
+                Name = registerVM.Name,
+                Surname = registerVM.Name,
                 Email = registerVM.Email,
             };
 
