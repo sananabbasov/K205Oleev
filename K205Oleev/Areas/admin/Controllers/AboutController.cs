@@ -50,12 +50,12 @@ namespace K205Oleev.Areas.admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             EditVM editVM = new()
             {
-                AboutLanguages = _services.GetAboutLanguages(id.Value),
-                About = _services.GetAboutById(id.Value)
+                AboutLanguages = _services.GetAboutLanguages(id),
+                About = _services.GetAboutById(id)
 
             };
 
@@ -65,17 +65,24 @@ namespace K205Oleev.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int AboutID,List<int> LangID, List<string> Title, List<string> Description, List<string> LangCode, IFormFile Image)
+        public async Task<IActionResult> Edit(About about, int AboutID,List<int> LangID, List<string> Title, List<string> Description, List<string> LangCode, IFormFile Image)
         {
 
-            // sekil.jpg
-            //            /files/adasd-asdasd-asdas-asdassekil1.jpg
             string path = "/files/" + Guid.NewGuid() + Image.FileName;
             using (var fileStream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
             {
                 await Image.CopyToAsync(fileStream);
             }
 
+
+            for (int i = 0; i < Title.Count; i++)
+            {
+                _services.Edit(about,AboutID, LangID[i], Title[i], Description[i], LangCode[i], path);
+            }
+            
+            
+
+            
 
             return RedirectToAction(nameof(Index));
         }

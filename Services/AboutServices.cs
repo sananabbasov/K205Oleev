@@ -53,7 +53,7 @@ namespace Services
 
         public List<AboutLanguage> GetAboutLanguages(int id)
         {
-            return _context.AboutLanguages.Where(x=>x.AboutID == id).ToList();
+            return _context.AboutLanguages.Where(x=>x.About.ID == id).ToList();
         }
 
         public About GetAboutById(int id)
@@ -61,18 +61,13 @@ namespace Services
             return _context.Abouts.FirstOrDefault(x=>x.ID == id);
         }
 
-        public void Edit(int AboutID, int LangID, string Title, string Description, string LangCode, string SEO, string PhotoURL)
+        public void Edit(About about, int AboutID, int LangID, string Title, string Description, string LangCode, string PhotoURL)
         {
             SEO seo = new();
 
-            About about = new()
-            {
-                ID = AboutID,
-                CreatedDate = DateTime.Now,
-            };
+            about.PhotoURL = PhotoURL;
 
-
-           
+            _context.Abouts.Update(about);
 
             AboutLanguage aboutLanguage = new()
             {
