@@ -10,14 +10,16 @@ using Services;
 namespace K205Oleev.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    //[Authorize]
     public class AboutController : Controller
     {
         private readonly AboutServices _services;
+        private IWebHostEnvironment _environment;
 
-        public AboutController(AboutServices services)
+        public AboutController(AboutServices services, IWebHostEnvironment environment)
         {
             _services = services;
+            _environment = environment;
         }
 
         public IActionResult Index()
@@ -50,37 +52,29 @@ namespace K205Oleev.Areas.admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            //EditVM editVM = new()
-            //{
-            //    AboutLanguages = _context.AboutLanguages.Include(x => x.About).Where(x => x.AboutID == id).ToList(),
-            //    About = _context.Abouts.FirstOrDefault(x => x.ID == id.Value)
-            //};
+            EditVM editVM = new()
+            {
+                AboutLanguages = _services.GetAboutLanguages(id.Value),
+                About = _services.GetAboutById(id.Value)
+
+            };
 
 
-            //return View(editVM);
-            return null;
+            return View(editVM);
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int AboutID,List<int> LangID, List<string> Title, List<string> Description, List<string> LangCode)
+        public async Task<IActionResult> Edit(int AboutID,List<int> LangID, List<string> Title, List<string> Description, List<string> LangCode, IFormFile Image)
         {
-            //for (int i = 0; i < Title.Count; i++)
-            //{
-            //    SEO seo = new();
 
-            //    AboutLanguage aboutLanguage = new()
-            //    {
-            //        ID = LangID[i],
-            //        Title = Title[i],
-            //        Description=Description[i],
-            //        SEO = seo.SeoURL(Title[i]),
-            //        LangCode = LangCode[i],
-            //        AboutID = AboutID
-            //    };
-            //    var updatedEntity = _context.Entry(aboutLanguage);
-            //    updatedEntity.State = EntityState.Modified;
-            //}
-            //    _context.SaveChanges();
+            // sekil.jpg
+            //            /files/adasd-asdasd-asdas-asdassekil1.jpg
+            string path = "/files/" + Guid.NewGuid() + Image.FileName;
+            using (var fileStream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+            {
+                await Image.CopyToAsync(fileStream);
+            }
 
 
             return RedirectToAction(nameof(Index));

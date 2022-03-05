@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Entities;
+using Helper.Methods;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,46 @@ namespace Services
                 _context.AboutLanguages.Add(aboutLanguage);
             
             
+            _context.SaveChanges();
+        }
+
+
+        public List<AboutLanguage> GetAboutLanguages(int id)
+        {
+            return _context.AboutLanguages.Where(x=>x.AboutID == id).ToList();
+        }
+
+        public About GetAboutById(int id)
+        {
+            return _context.Abouts.FirstOrDefault(x=>x.ID == id);
+        }
+
+        public void Edit(int AboutID, int LangID, string Title, string Description, string LangCode, string SEO, string PhotoURL)
+        {
+            SEO seo = new();
+
+            About about = new()
+            {
+                ID = AboutID,
+                CreatedDate = DateTime.Now,
+            };
+
+
+           
+
+            AboutLanguage aboutLanguage = new()
+            {
+                ID = LangID,
+                Title = Title,
+                Description = Description,
+                SEO = seo.SeoURL(Title),
+                LangCode = LangCode,
+                AboutID = AboutID
+
+            };
+
+            var updatedEntity = _context.Entry(aboutLanguage);
+            updatedEntity.State = EntityState.Modified;
             _context.SaveChanges();
         }
     }
