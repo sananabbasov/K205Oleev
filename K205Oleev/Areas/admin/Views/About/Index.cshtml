@@ -4,11 +4,11 @@
 
 <!-- DataTales Example -->
 
-@ViewBag.Sayi
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">
-            <a id="myBtn" asp-action="create">Create</a>
+            <a id="@(ViewBag.Sayi == 1? "myBtn": null)" asp-action="create">Create</a>
         </h6>
     </div>
     <div class="card-body">
