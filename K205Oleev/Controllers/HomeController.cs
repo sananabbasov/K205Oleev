@@ -20,9 +20,10 @@ namespace K205Oleev.Controllers
 
         public IActionResult Index()
         {
+            var langCode = Request.Cookies["Language"];
             HomeVM homeVM = new()
             {
-                AboutLanguages = _aboutServices.GetAll()
+                AboutLanguages = _aboutServices.GetAll(langCode)
             };
             return View(homeVM);
         }

@@ -19,9 +19,10 @@ namespace Services
             _context = context;
         }
 
-        public List<AboutLanguage> GetAll()
+        public List<AboutLanguage> GetAll(string lang)
         {
-            var about = _context.AboutLanguages.Include(x=>x.About).Where(x=>x.LangCode == "AZ").ToList();
+            
+            var about = _context.AboutLanguages.Include(x=>x.About).Where(x=>x.LangCode == lang).ToList();
             return about;
         }
 

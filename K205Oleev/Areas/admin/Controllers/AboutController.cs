@@ -24,7 +24,19 @@ namespace K205Oleev.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-          var about = _services.GetAll();
+            var langCode = Request.Cookies["Language"];
+            var about = _services.GetAll(langCode);
+
+            if (about.Count > 0)
+            {
+                ViewBag.Sayi = 1;
+            }
+            else
+            {
+                ViewBag.Sayi = 0;
+            }
+
+
             
             return View(about);
         }

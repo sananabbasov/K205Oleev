@@ -7,8 +7,8 @@ namespace K205Oleev.Controllers
         public IActionResult Index(string lang)
         {
             CookieOptions cookieOptions = new();
-            cookieOptions.Path = lang;
-            return View();
+            Response.Cookies.Append("Language", lang);
+            return RedirectToAction("Index","Home");
         }
     }
 }
